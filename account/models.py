@@ -14,6 +14,10 @@ class profile(models.Model):
     city = models.CharField('شهر', max_length=50, null=True)
     phone = models.CharField('تلفن', max_length=12, null=True)
 
+    Secretary, Doctor, AdminSystem = 0, 1, 2
+    role_list = [(Secretary, 'منشی (سطح 0)'), (Doctor, 'دکتر (سطح 1)'), (AdminSystem, 'ادمین سیستم (سطح 3)')]
+    role = models.IntegerField('سطح دسترسی', choices=role_list, null=True, default=0, blank=True)
+
     General, Specialist, SuperSpecialist = 0, 1, 2
     deg = [(General, 'عمومی'), (Specialist, 'تخصص'), (SuperSpecialist, 'فوق تخصص')]
     degree = models.IntegerField('درجه تحصیلی', choices=deg, null=True, blank=True)

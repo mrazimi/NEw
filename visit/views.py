@@ -15,10 +15,18 @@ time_now = datetime.date(datetime.now())
 # Create your views here.
 @login_required
 def main_page(request):
+    """    if request.user.profile.role == 0:
+        pass
+    elif request.user.profile.role == 1:
+        pass
+    elif request.user.profile.role == 2:
+        pass
+        """
     patient = Patient.objects.all()
     context = {
         'count': patient.__len__(),
-        'date': time_now
+        'date': time_now,
+        'role': request.user.profile.role
     }
     return render(request, 'visit/main_page.html', context)
 

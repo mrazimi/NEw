@@ -9,20 +9,25 @@
 {% endblock %}
 
 {% block main %}
+
+
+
+{% if role == 0 or role == 1 or role == 2%}
     <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
         <a href="{% url "visit:add_patient" %}" class="text-decoration-none text-white">
             افزودن پرونده بیمار
         </a>
-
     </button>
     </br >
     <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
         <a href="{% url "visit:add_doc" %}" class="text-decoration-none text-white">
             اظافه کردن سند جدید
         </a>
-
     </button>
     </br >
+{% endif %}
+
+{% if role == 1 or role == 2%}
     <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
         <a href="{% url "visit:show_patient" %}" class="text-decoration-none text-white">
             مشاهده لیست بیماران
@@ -35,4 +40,12 @@
             ویرایش اطلاعات دکتر
         </a>
     </button>
+{% endif %}
+
+    {% if role == 3 %}
+        <p> سطح 3 </p>
+    {% endif %}
+
+
+
 {% endblock %}
