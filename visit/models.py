@@ -23,7 +23,7 @@ class Visit(models.Model):
 
     patient = models.ForeignKey('Patient', on_delete=models.DO_NOTHING, verbose_name='بیمار')
     doctor = models.ForeignKey('account.profile', on_delete=models.DO_NOTHING, verbose_name='دکتر')
-    datetime = models.DateTimeField('زمان مراجعه')
+    datetime = models.DateTimeField('زمان مراجعه', auto_now_add=True)
     description = models.TextField('توضیحات', max_length=250)
 
     def to_jalali(self):
