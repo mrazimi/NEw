@@ -31,3 +31,14 @@ class AddDocument(forms.ModelForm):
             'datetime': AdminDateWidget(),
         }
 
+
+class AddUser(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = '__all__'
+
+
+class AddDoctor(forms.ModelForm):
+    class Meta:
+        model = profile
+        fields = '__all__'

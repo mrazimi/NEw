@@ -43,7 +43,16 @@
 {% endif %}
 
 {% if role == 2 %}
-    <p> سطح 3 </p>
+     <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
+        <a href="{% url "visit:add_doctor" %}" class="text-decoration-none text-white">
+            Add Account
+        </a>
+    </button>
+     <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
+        <a href="{% url "visit:add_user" %}" class="text-decoration-none text-white">
+            Add User
+        </a>
+    </button>
 {% endif %}
 
 
