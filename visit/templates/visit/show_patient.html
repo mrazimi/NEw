@@ -1,0 +1,30 @@
+{% extends "visit/_base.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block date %}
+{{ date }}
+{% endblock %}
+
+{% block main %}
+    <ul class="list-group">
+        {% if patient %}
+            {% for people in patient %}
+                <li class="list-group-item m-2">
+                    <i class="fa fa-people-arrows"></i>
+                    <span class="border-end border-dark p-2 m-2">{{ people.fullname }}</span>
+                    <span class="border-end border-dark p-2">{{ people.age }}ساله</span>
+                    <button type="button" class="btn btn-primary btn-sm float-start">
+                        <i class="fa fa-plus-circle"></i>
+                        دیدن بیشتر
+                    </button>
+                </li>
+            {% endfor %}
+        {% else %}
+            <p class="alert-danger">بیماری موجود نیست</p>
+        {% endif %}
+
+    </ul>
+{% endblock %}

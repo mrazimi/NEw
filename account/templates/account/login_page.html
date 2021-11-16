@@ -1,0 +1,45 @@
+{% extends "visit/_base.html" %}
+
+{% block title %}
+ورود
+{% endblock %}
+
+
+
+{% block main %}
+
+    <div class="row">
+
+            <div class="col-3"></div>
+
+            <div class="col-6">
+                <div class="login-form bg-light mt-4 p-4">
+                    <form action="" method="post" class="row g-3">
+                        {% csrf_token %}
+
+                        <h4>خوش آمدید</h4>
+                        {% if error_text  %}
+                        <div class="col-12">
+                            <p class="text-danger">{{ error_text }}</p>
+                        </div>
+                        {% endif %}
+                        <div class="col-12">
+                            <label>نام کاربری:</label>
+                            <input type="text" name="username" class="form-control" placeholder="username" value="{{ username }}">
+                        </div>
+                        <div class="col-12">
+                            <label>رمز:</label>
+                            <input type="password" name="password" class="form-control" placeholder="password">
+                        </div>
+
+                        <div class="col-12 align-items-center">
+                            <button type="submit" class="btn btn-success w-100 my-3 shadow">ورود</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "visit/_base.html" %}
+
+{% block title %}
+    صفحه اصلی
+{% endblock %}
+
+{% block date %}
+{{ date }}
+{% endblock %}
+
+{% block main %}
+    <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
+        <a href="{% url "visit:add_patient" %}" class="text-decoration-none text-white">
+            افزودن پرونده بیمار
+        </a>
+
+    </button>
+    </br >
+    <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
+        <a href="{% url "visit:add_doc" %}" class="text-decoration-none text-white">
+            اظافه کردن سند جدید
+        </a>
+
+    </button>
+    </br >
+    <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
+        <a href="{% url "visit:show_patient" %}" class="text-decoration-none text-white">
+            مشاهده لیست بیماران
+        </a>
+        <span class="text-muted">({{ count }})</span>
+    </button>
+    </br >
+    <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
+        <a href="{% url "visit:edit_info" %}" class="text-decoration-none text-white">
+            ویرایش اطلاعات دکتر
+        </a>
+    </button>
+{% endblock %}
