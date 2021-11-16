@@ -8,10 +8,19 @@
 {{ date }}
 {% endblock %}
 
-<script src="{% url 'visit:js-catalog' %}"></script>
-<script src="{% static 'admin/js/core.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}"/>
 <script type="stylesheet" src="{% static 'admin/css/base.css' %}"></script>
 <script type="stylesheet" src="{% static 'admin/css/widgets.css' %}"></script>
+<script type="text/javascript" src="{% url 'visit:js-catalog' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/admin/RelatedObjectLookups.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/actions.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/calendar.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/admin/DateTimeShortcuts.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/admin/RelatedObjectLookups.js' %}"></script>
 
 
 {% block main %}
@@ -20,6 +29,8 @@
         <table class="bg-success">
             {{ add_document_form.media }}
             {{ add_document_form.as_table }}
+
+            {{ add_document_form.datetime }}
         </table>
 
 

@@ -8,6 +8,8 @@ from django.contrib.admin import widgets
 
 
 class AddPatientForm(forms.ModelForm):
+    age = forms.DateTimeField(label='سن', required=False, widget=SelectDateWidget)
+
     class Meta:
         model = Patient
         fields = ['file_number', 'fullname', 'age', 'phone']
@@ -20,8 +22,12 @@ class EditDoctorInformation(forms.ModelForm):
 
 
 class AddDocument(forms.ModelForm):
-    datetime = forms.DateField(label='زمان مراجعه', required=False, widget=SelectDateWidget)
+    datetime = forms.DateField(label='زمان مراجعه', required=False, widget=AdminSplitDateTime)
 
     class Meta:
         model = Visit
         exclude = ['doctor']
+        widgets = {
+            'datetime': AdminDateWidget(),
+        }
+

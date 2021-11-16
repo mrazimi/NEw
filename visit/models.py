@@ -1,5 +1,6 @@
 from django.db import models
-from jalali_date import date2jalali,datetime2jalali
+from jalali_date import date2jalali, datetime2jalali
+
 
 # Create your models here.
 class Patient(models.Model):
@@ -9,7 +10,7 @@ class Patient(models.Model):
 
     file_number = models.CharField(primary_key=True, max_length=10)
     fullname = models.CharField('نام کامل', max_length=120)
-    age = models.IntegerField('تاریخ تولد', null=True)
+    age = models.DateTimeField('تاریخ تولد', null=True)
     phone = models.CharField('تلفن', max_length=11, null=True)
 
     def __str__(self):
