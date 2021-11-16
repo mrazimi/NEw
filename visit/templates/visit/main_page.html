@@ -15,13 +15,13 @@
 {% if role == 0 or role == 1 or role == 2%}
     <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
         <a href="{% url "visit:add_patient" %}" class="text-decoration-none text-white">
-            افزودن پرونده بیمار
+            Add Patient
         </a>
     </button>
     </br >
     <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
         <a href="{% url "visit:add_doc" %}" class="text-decoration-none text-white">
-            اظافه کردن سند جدید
+            Add File
         </a>
     </button>
     </br >
@@ -30,21 +30,21 @@
 {% if role == 1 or role == 2%}
     <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
         <a href="{% url "visit:show_patient" %}" class="text-decoration-none text-white">
-            مشاهده لیست بیماران
+            Patient List
         </a>
         <span class="text-muted">({{ count }})</span>
     </button>
     </br >
     <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
         <a href="{% url "visit:edit_info" %}" class="text-decoration-none text-white">
-            ویرایش اطلاعات دکتر
+            Edit Profile
         </a>
     </button>
 {% endif %}
 
-    {% if role == 3 %}
-        <p> سطح 3 </p>
-    {% endif %}
+{% if role == 2 %}
+    <p> سطح 3 </p>
+{% endif %}
 
 
 
