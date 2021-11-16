@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.admin.widgets import AdminDateWidget, AdminSplitDateTime, ForeignKeyRawIdWidget, AdminTimeWidget
-from django.forms import DateInput
+from django.forms import DateInput, SelectDateWidget
 import account.models
 from visit.models import *
 from account.models import *
@@ -20,7 +20,7 @@ class EditDoctorInformation(forms.ModelForm):
 
 
 class AddDocument(forms.ModelForm):
-    datetime = forms.DateField(label='زمان مراجعه', required=False, widget=AdminDateWidget)
+    datetime = forms.DateField(label='زمان مراجعه', required=False, widget=SelectDateWidget)
 
     class Meta:
         model = Visit
