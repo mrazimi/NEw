@@ -64,7 +64,12 @@ def add_patient(request):
 
 @login_required
 def edit_info(request):
-    edit_doctor = EditDoctorInformation(instance=request.user.profile)
+    edit_doctor = EditDoctorInformation(request.POST or None, instance=request.user.profile)
+    if request.method == 'POST':
+        if edit_doctor.is_valid:
+            edit_doctor.save(commit=True)
+            return redirect('visit:main_page')
+
     context = {
         'edit_doctor': edit_doctor,
         'date': time_now

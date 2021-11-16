@@ -18,7 +18,7 @@ class AddPatientForm(forms.ModelForm):
 class EditDoctorInformation(forms.ModelForm):
     class Meta:
         model = profile
-        exclude = ['user']
+        exclude = ['user', 'role']
 
 
 class AddDocument(forms.ModelForm):
