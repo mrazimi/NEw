@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from jdatetime import datetime
 
@@ -163,3 +163,13 @@ def add_user(request):
             return render(request, 'visit/add_user.html', context)
     else:
         return redirect('visit:main_page')
+
+
+def patient_detail(request, fileNumber):
+    patient_file = get_object_or_404(Patient, file_number=fileNumber)
+
+    context = {
+        'patient': patient_file,
+        'date': time_now
+    }
+    return render(request, 'visit/patient_detail.html', context)

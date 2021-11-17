@@ -1,0 +1,21 @@
+{% extends "visit/_base.html" %}
+{% load static %}
+
+{% block title %}
+Detail
+{% endblock %}
+
+{% block date %}
+{{ date }}
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-4">
+            <label>name</label>
+        </div>
+        <div class="col-4">
+            {{ patient.fullname }}
+        </div>
+    </div>
+{% endblock %}

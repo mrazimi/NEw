@@ -47,8 +47,10 @@
                     <span class="border-start border-dark p-2 m-2">{{ people.fullname }}</span>
 
                     <button type="button" class="btn btn-primary btn-sm float-end">
-                        <i class="fa fa-plus-circle"></i>
-                        more
+                        <a href="{% url "visit:patient_detail" fileNumber=people.file_number %}" class="text-decoration-none text-white">
+                            <i class="fa fa-plus-circle"></i>
+                            more
+                        </a>
                     </button>
                 </li>
             {% endfor %}
