@@ -8,12 +8,38 @@ Edit Profile
 {{ date }}
 {% endblock %}
 
+{% block style %}
+<style>
+.inp > input {
+    border: 1px solid #a39e9e;
+    padding: 0;
+    border-top: 0px;
+    box-shadow: 0 0 1px #ccc;
+    height: 50px;
+    border-radius: 5px;
+    direction: rtl;
+}
+</style>
+{% endblock %}
+
 {% block main %}
     <form action="" method="post">
         {% csrf_token %}
-        <table class="bg-success">
+    <!-- <table class="bg-success">
             {{ edit_doctor }}
-        </table>
+        </table> -->
+
+        <div class="modal-body">
+            <div class="mb-3">
+                    {% include "visit/_form.html" with field=edit_doctor.fullname lbl_size=4 %}
+                    {% include "visit/_form.html" with field=edit_doctor.age lbl_size=4 %}
+                    {% include "visit/_form.html" with field=edit_doctor.city lbl_size=4 %}
+                    {% include "visit/_form.html" with field=edit_doctor.phone lbl_size=4 %}
+                    {% include "visit/_form.html" with field=edit_doctor.degree lbl_size=4 %}
+                    {% include "visit/_form.html" with field=edit_doctor.title lbl_size=4 %}
+                    {% include "visit/_form.html" with field=edit_doctor.address lbl_size=4 %}
+            </div>
+        </div>
 
         <button class="btn btn-primary my-4" type="submit">ثبت</button>
     </form>

@@ -1,5 +1,5 @@
 {% extends "visit/_base.html" %}
-
+{% load static %}
 {% block title %}
     صفحه اصلی
 {% endblock %}
@@ -8,9 +8,11 @@
 {{ date }}
 {% endblock %}
 
+{% block style %}
+
+{% endblock %}
+
 {% block main %}
-
-
 
 {% if role == 0 or role == 1 or role == 2%}
     <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
@@ -54,7 +56,5 @@
         </a>
     </button>
 {% endif %}
-
-
 
 {% endblock %}
