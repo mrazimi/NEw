@@ -7,6 +7,13 @@ from account.models import *
 from django.contrib.admin import widgets
 
 
+class SearchPatient(forms.Form):
+    patient_name = forms.CharField(max_length=100, required=False, label='Name')
+    doctor_name = forms.CharField(max_length=100, required=False, label='Doctor Name')
+    begin_date = forms.DateTimeField(label='az', required=False, widget=SelectDateWidget)
+    end_date = forms.DateTimeField(label='ta', required=False, widget=SelectDateWidget)
+
+
 class AddPatientForm(forms.ModelForm):
     age = forms.DateTimeField(label='سن', required=False, widget=SelectDateWidget)
 

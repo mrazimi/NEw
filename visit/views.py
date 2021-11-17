@@ -13,6 +13,7 @@ from visit.forms import *
 time_now = datetime.date(datetime.now())
 patient = Patient.objects.all()
 
+
 # Create your views here.
 @login_required
 def main_page(request):
@@ -23,8 +24,15 @@ def main_page(request):
     elif request.user.profile.role == 2:
         pass
         """
+    if request.user.profile.role == 2:
+        patient_list = Patient.objects.all()
+    elif request.user.profile.role == 1:
+        patient_list = Patient.objects.filter(visit__doctor_id=request.user.id).order_by('-visit__datetime')
+    else:
+        patient_list = []
+
     context = {
-        'count': patient.__len__(),
+        'count': patient_list.__len__(),
         'date': time_now,
         'role': request.user.profile.role
     }
@@ -33,11 +41,30 @@ def main_page(request):
 
 @login_required
 def show_patient(request):
-    patient = Patient.objects.all()
+    if request.user.profile.role == 2:
+        patient_list = Patient.objects.all()
+    elif request.user.profile.role == 1:
+        patient_list = Patient.objects.filter(visit__doctor_id=request.user.id)
+    else:
+        patient_list = []
+
+    search_form = SearchPatient(request.GET)
+    if search_form.is_valid():
+        patient_name = search_form.cleaned_data['patient_name']
+        doctor_name = search_form.cleaned_data['doctor_name']
+        # begin_date = search_form.cleaned_data['begin_date']
+        # end_date = search_form.cleaned_data['end_date']
+        patient_list = patient_list.filter(fullname__contains=patient_name)
+
+        # patient_list = patient_list.filter(visit__doctor__fullname__contains=doctor_name)
+    else:
+        patient_list = Patient.objects.all()
+
     context = {
-        'patient': patient,
-        'count': patient.__len__(),
-        'date': time_now
+        'patient': patient_list,
+        'count': patient_list.__len__(),
+        'date': time_now,
+        'search_form': search_form
     }
     return render(request, 'visit/show_patient.html', context)
 
@@ -135,4 +162,3 @@ def add_user(request):
             return render(request, 'visit/add_user.html', context)
     else:
         return redirect('visit:main_page')
-

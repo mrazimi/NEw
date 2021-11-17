@@ -8,9 +8,39 @@
 {{ date }}
 {% endblock %}
 
+{% block style %}
+<style>
+.search{
+    padding: 10px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #000;
+    border-radius: 3px;
+}
+.search > input{
+    background: #5c636a50;
+    direction: rtl;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+</style>
+{% endblock %}
+
 {% block main %}
+
+    <div class="row bg-warning bg-opacity-25 search">
+        <form action="" method="get">
+            <div class="col-12 m-2">
+                {{ search_form.as_table }}
+            </div>
+            <button type="submit" class="btn btn-info">Search</button>
+
+        </form>
+
+    </div>
     <ul class="list-group text-start">
         {% if patient %}
+
             {% for people in patient %}
                 <li class="list-group-item list-group-item-primary m-2">
                     <i class="fa fa-people-arrows"></i>

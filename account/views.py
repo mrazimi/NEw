@@ -9,22 +9,23 @@ from django.urls import reverse
 def login_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('visit:main_page'))
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is None:
-            context = {
-                'username': username,
-                'error_text': 'کاربری با این مشخصات یافت نشد'
-            }
-            return render(request, "account/login_page.html", context)
-        else:
-            login(request, user)
-            return HttpResponseRedirect(reverse('visit:main_page'))
     else:
-        context = {}
-        return render(request, "account/login_page.html", context)
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is None:
+                context = {
+                    'username': username,
+                    'error_text': 'کاربری با این مشخصات یافت نشد'
+                }
+                return render(request, "account/login_page.html", context)
+            else:
+                login(request, user)
+                return HttpResponseRedirect(reverse('visit:main_page'))
+        else:
+            context = {}
+            return render(request, "account/login_page.html", context)
 
 
 def logout_view(request):
