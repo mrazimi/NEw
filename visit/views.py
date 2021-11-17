@@ -27,7 +27,7 @@ def main_page(request):
     if request.user.profile.role == 2:
         patient_list = Patient.objects.all()
     elif request.user.profile.role == 1:
-        patient_list = Patient.objects.filter(visit__doctor_id=request.user.id).order_by('-visit__datetime')
+        patient_list = Patient.objects.filter(doctor__user_id=request.user.id).order_by('-visit__datetime')
     else:
         patient_list = []
 
@@ -44,7 +44,7 @@ def show_patient(request):
     if request.user.profile.role == 2:
         patient_list = Patient.objects.all()
     elif request.user.profile.role == 1:
-        patient_list = Patient.objects.filter(visit__doctor_id=request.user.id)
+        patient_list = Patient.objects.filter(doctor__user_id=request.user.id)
     else:
         patient_list = []
 
@@ -55,8 +55,7 @@ def show_patient(request):
         # begin_date = search_form.cleaned_data['begin_date']
         # end_date = search_form.cleaned_data['end_date']
         patient_list = patient_list.filter(fullname__contains=patient_name)
-
-        # patient_list = patient_list.filter(visit__doctor__fullname__contains=doctor_name)
+        patient_list = patient_list.filter(doctor__fullname__contains=doctor_name)
     else:
         patient_list = Patient.objects.all()
 
@@ -74,7 +73,9 @@ def add_patient(request):
     if request.method == 'POST':
         add_form = AddPatientForm(request.POST)
         if add_form.is_valid():
-            add_form.save()
+            par = add_form.save(commit=False)
+            par.doctor = request.user.profile
+            par.save()
             messages.success(request, 'با موفقیت ثبت شد')
         else:
             messages.error(request, 'مشکلی رخ داده است')

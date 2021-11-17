@@ -11,6 +11,7 @@ class Patient(models.Model):
     file_number = models.CharField(primary_key=True, max_length=10)
     fullname = models.CharField('نام کامل', max_length=120)
     age = models.DateTimeField('تاریخ تولد', null=True)
+    doctor = models.ForeignKey('account.profile', on_delete=models.DO_NOTHING, verbose_name='دکتر')
     phone = models.CharField('تلفن', max_length=11, null=True)
 
     def __str__(self):
