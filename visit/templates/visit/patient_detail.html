@@ -10,12 +10,31 @@ Detail
 {% endblock %}
 
 {% block main %}
-    <div class="row">
-        <div class="col-4">
-            <label>name</label>
-        </div>
-        <div class="col-4">
-            {{ patient.fullname }}
-        </div>
-    </div>
+    <ul class="list-group bg-danger bg-opacity-25 text-start">
+
+        <li class="list-group-item list-group-item-primary m-2">
+            <i class="fa fa-people-carry"></i>
+            <span>name: </span>
+            <span class="p-2 m-2">{{ patient.fullname }}</span>
+        </li>
+
+        <li class="list-group-item list-group-item-primary m-2">
+            <i class="fa fa-book-reader"></i>
+            <span>age: </span>
+            <span class="p-2 m-2">{{ patient.age }}</span>
+        </li>
+
+        <li class="list-group-item list-group-item-primary m-2">
+            <i class="fa fa-city"></i>
+            <span>National ID: </span>
+            <span class="p-2 m-2">{{ patient.file_number }}</span>
+        </li>
+
+        <li class="list-group-item list-group-item-primary m-2">
+            <i class="fa fa-people-arrows"></i>
+            <span>Doctor: </span>
+            <span class="p-2 m-2">{{ patient.doctor.fullname }}</span><span class="text-muted">({{ patient.doctor.user.username}})</span>
+        </li>
+
+    </ul>
 {% endblock %}

@@ -165,9 +165,9 @@ def add_user(request):
         return redirect('visit:main_page')
 
 
+@login_required()
 def patient_detail(request, fileNumber):
     patient_file = get_object_or_404(Patient, file_number=fileNumber)
-
     context = {
         'patient': patient_file,
         'date': time_now
