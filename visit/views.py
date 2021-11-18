@@ -70,24 +70,23 @@ def show_patient(request):
 
 @login_required
 def add_patient(request):
+    add_form = AddPatientForm()
+
     if request.method == 'POST':
-        add_form = AddPatientForm(request.POST)
-        if add_form.is_valid():
+        if add_form.is_valid:
             par = add_form.save(commit=False)
             par.doctor = request.user.profile
             par.save()
             messages.success(request, 'با موفقیت ثبت شد')
         else:
             messages.error(request, 'مشکلی رخ داده است')
-        return redirect('visit:add_patient')
+        return redirect('visit:main_page')
     else:
-        add_form = AddPatientForm()
-
-    context = {
-        'add_form': add_form,
-        'date': time_now
-    }
-    return render(request, 'visit/add_patient.html', context)
+        context = {
+            'add_form': add_form,
+            'date': time_now
+        }
+        return render(request, 'visit/add_patient.html', context)
 
 
 @login_required
