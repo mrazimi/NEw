@@ -8,20 +8,6 @@
 {{ date }}
 {% endblock %}
 
-{% block style %}
-<style>
-input, select, textarea{
-    background: #5c636a50;
-    direction: rtl;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-.lbl{
-    box-shadow: 2px 2px 2px #ccc;
-}
-</style>
-{% endblock %}
 
 
 {% block main %}
@@ -30,12 +16,14 @@ input, select, textarea{
 
             {% include "visit/_form.html" with field=add_document_form.patient lbl_size=2 %}
             {% include "visit/_form.html" with field=add_document_form.datetime lbl_size=2 %}
+            {% include "visit/_form.html" with field=add_document_form.doctor lbl_size=2 %}
+            {% include "visit/_form.html" with field=add_document_form.kind lbl_size=2 %}
             {% include "visit/_form.html" with field=add_document_form.description lbl_size=2 %}
 
 
 
 
-        <button class="btn btn-primary my-4" type="submit">Confirm</button>
+        <button class="btn btn-primary my-4" type="submit">ثبت</button>
     </form>
 
 {% endblock %}

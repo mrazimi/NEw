@@ -69,17 +69,17 @@ def show_patient(request):
 
 @login_required
 def add_patient(request):
-    add_form = AddPatientForm()
+    add_form = AddPatientForm(request.POST)
 
     if request.method == 'POST':
         if add_form.is_valid:
             par = add_form.save(commit=False)
-            par.doctor = request.user.profile
             par.save()
             messages.success(request, 'با موفقیت ثبت شد')
+            return redirect('visit:main_page')
         else:
             messages.error(request, 'مشکلی رخ داده است')
-        return redirect('visit:main_page')
+            return redirect('visit:add_patient')
     else:
         context = {
             'add_form': add_form,
@@ -109,7 +109,6 @@ def add_doc(request):
         add_document_form = AddDocument(request.POST)
         if add_document_form.is_valid():
             doc = add_document_form.save(commit=False)
-            doc.profile = request.user.profile
             doc.save()
             messages.success(request, 'با موفقیت ثبت شد')
         else:

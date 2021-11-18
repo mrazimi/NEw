@@ -16,7 +16,7 @@ class profile(models.Model):
 
     Secretary, Doctor, AdminSystem = 0, 1, 2
     role_list = [(Secretary, 'منشی (سطح 0)'), (Doctor, 'دکتر (سطح 1)'), (AdminSystem, 'ادمین سیستم (سطح 3)')]
-    role = models.IntegerField('سطح دسترسی', choices=role_list, null=True, default=0, blank=True)
+    role = models.IntegerField(choices=role_list, null=True, default=0, blank=True)
 
     General, Specialist, SuperSpecialist = 0, 1, 2
     deg = [(General, 'عمومی'), (Specialist, 'تخصص'), (SuperSpecialist, 'فوق تخصص')]

@@ -10,29 +10,35 @@ Detail
 {% endblock %}
 
 {% block main %}
-    <ul class="list-group bg-danger bg-opacity-25 text-start">
+    <ul class="list-group bg-danger bg-opacity-25 text-end">
 
         <li class="list-group-item list-group-item-primary m-2">
             <i class="fa fa-people-carry"></i>
-            <span>name: </span>
+            <span>نام: </span>
             <span class="p-2 m-2">{{ patient.fullname }}</span>
         </li>
 
         <li class="list-group-item list-group-item-primary m-2">
             <i class="fa fa-book-reader"></i>
-            <span>age: </span>
+            <span>تاریخ تولد: </span>
+            <span class="p-2 m-2">{{ patient.age }}</span>
+        </li>
+
+        <li class="list-group-item list-group-item-primary m-2">
+            <i class="fa fa-book-reader"></i>
+            <span>تاریخ درج در سامانه: </span>
             <span class="p-2 m-2">{{ patient.age }}</span>
         </li>
 
         <li class="list-group-item list-group-item-primary m-2">
             <i class="fa fa-city"></i>
-            <span>National ID: </span>
+            <span>کد ملی: </span>
             <span class="p-2 m-2">{{ patient.file_number }}</span>
         </li>
 
         <li class="list-group-item list-group-item-primary m-2">
             <i class="fa fa-people-arrows"></i>
-            <span>Doctor: </span>
+            <span>نام دکتر معالج: </span>
             <span class="p-2 m-2">{{ patient.doctor.fullname }}</span><span class="text-muted">({{ patient.doctor.user.username}})</span>
         </li>
 

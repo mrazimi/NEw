@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block style %}
+    {{ block.super }}
 <style>
 .search{
     padding: 10px;
@@ -22,6 +23,7 @@
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    width: 50%;
 }
 </style>
 {% endblock %}
@@ -33,23 +35,22 @@
             <div class="col-12 m-2">
                 {{ search_form.as_table }}
             </div>
-            <button type="submit" class="btn btn-info">Search</button>
+            <button type="submit" class="btn btn-info">جستجو</button>
 
         </form>
 
     </div>
-    <ul class="list-group text-start bg-secondary bg-opacity-25">
+    <ul class="list-group text-end bg-secondary bg-opacity-25">
         {% if patient %}
-
             {% for people in patient %}
                 <li class="list-group-item list-group-item-primary m-2">
                     <i class="fa fa-people-arrows"></i>
-                    <span class="border-start border-dark p-2 m-2">{{ people.fullname }}</span>
+                    <span class="border-end border-dark p-2 m-2">{{ people.fullname }}</span>
 
-                    <button type="button" class="btn btn-primary btn-sm float-end">
+                    <button type="button" class="btn btn-primary btn-sm float-start">
                         <a href="{% url "visit:patient_detail" fileNumber=people.file_number %}" class="text-decoration-none text-white">
                             <i class="fa fa-plus-circle"></i>
-                            more
+                            بیشتر
                         </a>
                     </button>
                 </li>
