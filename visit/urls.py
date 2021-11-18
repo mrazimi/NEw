@@ -15,6 +15,7 @@ urlpatterns = [
     path('files/', show_files, name='show_files'),
 
     path('detail/<str:fileNumber>/', patient_detail, name='patient_detail'),
+    path('detail/file/<int:visit_id>/', visit_detail, name='visit_detail'),
     path('jsi18n', JavaScriptCatalog.as_view, name='js-catalog'),
 
 ]

@@ -1,0 +1,26 @@
+{% extends "visit/_base.html" %}
+{% load static %}
+
+{% block title %}
+اطلاعات جراحی
+{% endblock %}
+
+{% block date %}
+{{ date }}
+{% endblock %}
+
+{% block main %}
+    <ul class="list-group bg-danger bg-opacity-25 text-end">
+
+        {% include "visit/_item.html" with icon='fa-city' name='کد ملی/شناسه بیمار :' field=visit.patient.file_number %}
+
+        {% include "visit/_item.html" with icon='fa-people-carry' name='نام و نام خانوادگی بیمار :' field=visit.patient.fullname %}
+
+        {% include "visit/_item.html" with icon='fa-dove' name='نام دکتر معالج :' field=visit.doctor.fullname %}
+
+        {% include "visit/_item.html" with icon='fa-info-circle' name='تاریخ ثبت سند :' field=visit.datetime %}
+
+
+
+    </ul>
+{% endblock %}

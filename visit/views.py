@@ -197,3 +197,13 @@ def patient_detail(request, fileNumber):
         'date': time_now
     }
     return render(request, 'visit/patient_detail.html', context)
+
+
+@login_required()
+def visit_detail(request, visit_id):
+    visit_file = get_object_or_404(Visit, pk=visit_id)
+    context = {
+        'visit': visit_file,
+        'date': time_now
+    }
+    return render(request, 'visit/file_detail.html', context)

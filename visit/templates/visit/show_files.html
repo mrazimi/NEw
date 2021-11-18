@@ -50,12 +50,12 @@
                     <span class=" border-dark p-2 m-2">{{ visit.doctor.fullname }}</span>
                     <span class="text-muted border-end">({{ visit.doctor.user.username }})</span> |
 
-                    {% if visit.kind == 0 %}
-                        <span class=" border-dark p-2 m-2">جراحی شماره 1 </span>
-                    {% elif visit.kind == 1 %}
-                        <span class=" border-dark p-2 m-2">جراحی شماره 2 </span>
-                    {% endif %}
-
+                    <button type="button" class="btn btn-primary btn-sm float-start">
+                        <a href="{% url "visit:visit_detail" visit_id=visit.id %}" class="text-decoration-none text-white">
+                            <i class="fa fa-plus-circle"></i>
+                            بیشتر
+                        </a>
+                    </button>
                 </li>
 
             {% endfor %}

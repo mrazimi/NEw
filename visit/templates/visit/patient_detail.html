@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Detail
+{{ patient.fullname }}
 {% endblock %}
 
 {% block date %}
@@ -12,35 +12,13 @@ Detail
 {% block main %}
     <ul class="list-group bg-danger bg-opacity-25 text-end">
 
-        <li class="list-group-item list-group-item-primary m-2">
-            <i class="fa fa-people-carry"></i>
-            <span>نام: </span>
-            <span class="p-2 m-2">{{ patient.fullname }}</span>
-        </li>
+        {% include "visit/_item.html" with icon='fa-city' name='کد ملی/شناسه :' field=patient.file_number %}
 
-        <li class="list-group-item list-group-item-primary m-2">
-            <i class="fa fa-book-reader"></i>
-            <span>تاریخ تولد: </span>
-            <span class="p-2 m-2">{{ patient.age }}</span>
-        </li>
+        {% include "visit/_item.html" with icon='fa-people-carry' name='نام و نام خانوادگی :' field=patient.fullname %}
 
-        <li class="list-group-item list-group-item-primary m-2">
-            <i class="fa fa-book-reader"></i>
-            <span>تاریخ درج در سامانه: </span>
-            <span class="p-2 m-2">{{ patient.age }}</span>
-        </li>
+        {% include "visit/_item.html" with icon='fa-book-reader' name='تاریخ تولد :' field=patient.age %}
 
-        <li class="list-group-item list-group-item-primary m-2">
-            <i class="fa fa-city"></i>
-            <span>کد ملی: </span>
-            <span class="p-2 m-2">{{ patient.file_number }}</span>
-        </li>
-
-        <li class="list-group-item list-group-item-primary m-2">
-            <i class="fa fa-people-arrows"></i>
-            <span>نام دکتر معالج: </span>
-            <span class="p-2 m-2">{{ patient.doctor.fullname }}</span><span class="text-muted">({{ patient.doctor.user.username}})</span>
-        </li>
+        {% include "visit/_item.html" with icon='fa-info-circle' name='درج در سامانه :' field=patient.age %}
 
     </ul>
 {% endblock %}
