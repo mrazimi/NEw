@@ -8,38 +8,34 @@
 {{ date }}
 {% endblock %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}"/>
-<script type="stylesheet" src="{% static 'admin/css/base.css' %}"></script>
-<script type="stylesheet" src="{% static 'admin/css/widgets.css' %}"></script>
-<script type="text/javascript" src="{% url 'visit:js-catalog' %}"></script>
-<script type="text/javascript" src="{% static 'admin/js/admin/RelatedObjectLookups.js' %}"></script>
-<script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
-<script type="text/javascript" src="{% static 'admin/js/actions.js' %}"></script>
-<script type="text/javascript" src="{% static 'admin/js/calendar.js' %}"></script>
-<script type="text/javascript" src="{% static 'admin/js/admin/DateTimeShortcuts.js' %}"></script>
-<script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
-<script type="text/javascript" src="{% static 'admin/js/admin/RelatedObjectLookups.js' %}"></script>
+{% block style %}
+<style>
+input, select, textarea{
+    background: #5c636a50;
+    direction: rtl;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.lbl{
+    box-shadow: 2px 2px 2px #ccc;
+}
+</style>
+{% endblock %}
 
 
 {% block main %}
     <form action="" method="post">
         {% csrf_token %}
-        <table class="bg-success">
-            {{ add_document_form.media }}
-            {{ add_document_form.as_table }}
 
-            {{ add_document_form.datetime }}
-        </table>
+            {% include "visit/_form.html" with field=add_document_form.patient lbl_size=2 %}
+            {% include "visit/_form.html" with field=add_document_form.datetime lbl_size=2 %}
+            {% include "visit/_form.html" with field=add_document_form.description lbl_size=2 %}
+
 
 
 
         <button class="btn btn-primary my-4" type="submit">Confirm</button>
     </form>
 
-    <script>
-        var django = django || {};
-        django.jQuery = $;
-    </script>
 {% endblock %}

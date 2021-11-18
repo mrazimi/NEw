@@ -9,19 +9,30 @@
 {% endblock %}
 
 {% block style %}
-
+<style>
+.content{
+    background: #d3ddff;
+}
+.but{
+    width: 300px;
+    height: 100px;
+    margin: 10px;
+}
+</style>
 {% endblock %}
 
 {% block main %}
 
+
+
 {% if role == 0 or role == 1 or role == 2%}
-    <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
+    <button type="button" class="btn btn-primary btn-lg but">
         <a href="{% url "visit:add_patient" %}" class="text-decoration-none text-white">
             Add Patient
         </a>
     </button>
     </br >
-    <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
+    <button type="button" class="btn btn-primary btn-lg but">
         <a href="{% url "visit:add_doc" %}" class="text-decoration-none text-white">
             Add File
         </a>
@@ -30,14 +41,14 @@
 {% endif %}
 
 {% if role == 1 or role == 2%}
-    <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
+    <button type="button" class="btn btn-primary btn-lg but">
         <a href="{% url "visit:show_patient" %}" class="text-decoration-none text-white">
             Patient List
         </a>
         <span class="text-muted">({{ count }})</span>
     </button>
     </br >
-    <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
+    <button type="button" class="btn btn-primary btn-lg but">
         <a href="{% url "visit:edit_info" %}" class="text-decoration-none text-white">
             Edit Profile
         </a>
@@ -45,12 +56,12 @@
 {% endif %}
 
 {% if role == 2 %}
-     <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
+     <button type="button" class="btn btn-primary btn-lg float-end but" >
         <a href="{% url "visit:add_doctor" %}" class="text-decoration-none text-white">
             Add Account
         </a>
     </button>
-     <button type="button" class="btn btn-primary m-3 btn-lg" style="width: 300px;height: 100px">
+     <button type="button" class="btn btn-primary btn-lg float-end but">
         <a href="{% url "visit:add_user" %}" class="text-decoration-none text-white">
             Add User
         </a>

@@ -1,7 +1,8 @@
-<label class="col-{{ lbl_size }} m-2" for="{{ field.id_for_label }}">
-    {{ field.label }}
-</label>
-<div class="col-4 inp form-control">
-    {{ field }}
+<div class="row m-3">
+    <div class="col-{{ lbl_size }} lbl">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+    </div>
+    <div class="col-4">
+        {{ field }}
+    </div>
 </div>
-

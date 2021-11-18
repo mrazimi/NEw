@@ -6,7 +6,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from jdatetime import datetime
-
 from visit.models import *
 from visit.forms import *
 

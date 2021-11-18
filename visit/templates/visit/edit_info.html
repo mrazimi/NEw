@@ -10,16 +10,16 @@ Edit Profile
 
 {% block style %}
 <style>
-.inp > input {
-    border: 1px solid #a39e9e;
-    padding: 0;
-    border-top: 0px;
-    box-shadow: 0 0 1px #ccc;
-    height: 50px;
-    border-radius: 5px;
+input, select, textarea{
+    background: #5c636a50;
     direction: rtl;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
+
 </style>
+
 {% endblock %}
 
 {% block main %}
@@ -30,14 +30,15 @@ Edit Profile
         </table> -->
 
         <div class="modal-body">
-            <div class="mb-3">
-                    {% include "visit/_form.html" with field=edit_doctor.fullname lbl_size=4 %}
-                    {% include "visit/_form.html" with field=edit_doctor.age lbl_size=4 %}
-                    {% include "visit/_form.html" with field=edit_doctor.city lbl_size=4 %}
-                    {% include "visit/_form.html" with field=edit_doctor.phone lbl_size=4 %}
-                    {% include "visit/_form.html" with field=edit_doctor.degree lbl_size=4 %}
-                    {% include "visit/_form.html" with field=edit_doctor.title lbl_size=4 %}
-                    {% include "visit/_form.html" with field=edit_doctor.address lbl_size=4 %}
+            <div class="">
+                    {% include "visit/_form.html" with field=edit_doctor.fullname lbl_size=2 %}
+                    {% include "visit/_form.html" with field=edit_doctor.age lbl_size=2 %}
+                    {% include "visit/_form.html" with field=edit_doctor.city lbl_size=2 %}
+                    {% include "visit/_form.html" with field=edit_doctor.phone lbl_size=2 %}
+                    {% include "visit/_form.html" with field=edit_doctor.degree lbl_size=2 %}
+                    <br/>
+                    {% include "visit/_form.html" with field=edit_doctor.title lbl_size=2 %}
+                    {% include "visit/_form.html" with field=edit_doctor.address lbl_size=2 %}
             </div>
         </div>
 

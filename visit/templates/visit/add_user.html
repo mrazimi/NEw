@@ -9,12 +9,63 @@ Add User
 {{ date }}
 {% endblock %}
 
+{% block style %}
+<style>
+input{
+    background: #f0f0f0;
+    direction: rtl;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+.lbl{
+    box-shadow: 2px 2px 2px #ccc;
+}
+</style>
+{% endblock %}
+
 {% block main %}
 
     <form action="" method="post">
     {% csrf_token %}
-        {{ form.as_table }}
-     <button class="btn btn-primary my-4" type="submit">Confirm</button>
+        <div class="row m-3">
+            <div class="col-2 lbl">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+            </div>
+            <div class="col-4">
+                {{ form.username }}
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-2 lbl">
+                <label for="{{ form.password1.id_for_label }}">Password</label>
+            </div>
+            <div class="col-4">
+                {{ form.password1 }}
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-2 lbl">
+                <label for="{{ form.password2.id_for_label }}">Password Again</label>
+            </div>
+            <div class="col-4">
+                {{ form.password2 }}
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-3">
+
+            </div>
+            <div class="col-2">
+                <button class="btn btn-block btn-primary my-4" type="submit">Confirm</button>
+            </div>
+        </div>
+
+
     </form>
 
 {% endblock %}
