@@ -1,0 +1,67 @@
+{% extends "visit/_base.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block date %}
+{{ date }}
+{% endblock %}
+
+{% block style %}
+    {{ block.super }}
+<style>
+.search{
+    padding: 10px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #000;
+    border-radius: 3px;
+}
+.search > input{
+    background: #5c636a50;
+    direction: rtl;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 50%;
+}
+</style>
+{% endblock %}
+
+{% block main %}
+
+    <div class="row bg-warning bg-opacity-25 search">
+        <form action="" method="get">
+            <div class="col-12 m-2">
+                {{ search_form.as_table }}
+            </div>
+            <button type="submit" class="btn btn-info">جستجو</button>
+
+        </form>
+
+    </div>
+    <ul class="list-group text-end bg-secondary bg-opacity-25">
+        {% if visit_list %}
+            {% for visit in visit_list %}
+                <li class="list-group-item list-group-item-primary m-2">
+                    <i class="fa fa-people-arrows"></i>
+                    <span class="border-dark p-2 m-2">{{ visit.patient.fullname }}</span>
+                    <span class="text-muted border-end">({{ visit.patient.file_number }})</span> |
+                    <span class=" border-dark p-2 m-2">{{ visit.doctor.fullname }}</span>
+                    <span class="text-muted border-end">({{ visit.doctor.user.username }})</span> |
+
+                    {% if visit.kind == 0 %}
+                        <span class=" border-dark p-2 m-2">جراحی شماره 1 </span>
+                    {% elif visit.kind == 1 %}
+                        <span class=" border-dark p-2 m-2">جراحی شماره 2 </span>
+                    {% endif %}
+
+                </li>
+
+            {% endfor %}
+        {% else %}
+            <p class="alert-danger">سندی موجود نیست</p>
+        {% endif %}
+
+    </ul>
+{% endblock %}

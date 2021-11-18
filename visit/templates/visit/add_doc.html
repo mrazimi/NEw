@@ -15,7 +15,7 @@
         {% csrf_token %}
 
             {% include "visit/_form.html" with field=add_document_form.patient lbl_size=2 %}
-            {% include "visit/_form.html" with field=add_document_form.datetime lbl_size=2 %}
+            <!--{% include "visit/_form.html" with field=add_document_form.datetime lbl_size=2 %} -->
             {% include "visit/_form.html" with field=add_document_form.doctor lbl_size=2 %}
             {% include "visit/_form.html" with field=add_document_form.kind lbl_size=2 %}
             {% include "visit/_form.html" with field=add_document_form.description lbl_size=2 %}

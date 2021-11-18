@@ -12,6 +12,7 @@ urlpatterns = [
     path('addDocument/', add_doc, name='add_doc'),
     path('addUser/', add_user, name='add_user'),
     path('addDoctor/', add_doctor, name='add_doctor'),
+    path('files/', show_files, name='show_files'),
 
     path('detail/<str:fileNumber>/', patient_detail, name='patient_detail'),
     path('jsi18n', JavaScriptCatalog.as_view, name='js-catalog'),

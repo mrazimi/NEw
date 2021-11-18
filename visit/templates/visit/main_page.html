@@ -33,19 +33,27 @@
     </button>
     </br >
     <button type="button" class="btn btn-primary btn-lg but">
-        <a href="{% url "visit:add_doc" %}" class="text-decoration-none text-white">
-            افزودن جراحی
+        <a href="{% url "visit:show_patient" %}" class="text-decoration-none text-white">
+            لیست بیماران
         </a>
+        <span class="text-muted">({{ count }})</span>
     </button>
     </br >
 {% endif %}
 
 {% if role == 1 or role == 2%}
+
     <button type="button" class="btn btn-primary btn-lg but">
-        <a href="{% url "visit:show_patient" %}" class="text-decoration-none text-white">
-            لیست بیماران
+        <a href="{% url "visit:add_doc" %}" class="text-decoration-none text-white">
+            افزودن جراحی
         </a>
-        <span class="text-muted">({{ count }})</span>
+    </button>
+    </br>
+    <button type="button" class="btn btn-primary btn-lg but">
+        <a href="{% url "visit:show_files" %}" class="text-decoration-none text-white">
+            لیست جراحی ها
+        </a>
+        <span class="text-muted">({{ count_visit }})</span>
     </button>
 {% endif %}
 

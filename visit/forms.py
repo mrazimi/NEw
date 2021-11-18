@@ -10,6 +10,8 @@ from django.contrib.admin import widgets
 class SearchPatient(forms.Form):
     patient_name = forms.CharField(max_length=100, required=False, label='نام بیمار')
     doctor_name = forms.CharField(max_length=100, required=False, label='نام دکتر معالج')
+    national_id = forms.CharField(max_length=10, required=False, label='کد ملی/شناسه')
+
     begin_date = forms.DateTimeField(label='از تاریخ', required=False, widget=SelectDateWidget)
     end_date = forms.DateTimeField(label='تا تاریخ', required=False, widget=SelectDateWidget)
 
@@ -19,8 +21,8 @@ class AddPatientForm(forms.ModelForm):
 
     class Meta:
         model = Patient
-        fields='__all__'
-        #exclude = ['doctor']
+        fields = '__all__'
+        # exclude = ['doctor']
 
 
 class EditDoctorInformation(forms.ModelForm):
@@ -30,14 +32,11 @@ class EditDoctorInformation(forms.ModelForm):
 
 
 class AddDocument(forms.ModelForm):
-    datetime = forms.DateField(label='زمان مراجعه', required=False, widget=AdminSplitDateTime)
+    # datetime = forms.DateField(label='زمان مراجعه', required=False, widget=AdminSplitDateTime)
 
     class Meta:
         model = Visit
         fields = '__all__'
-        widgets = {
-            'datetime': AdminDateWidget(),
-        }
 
 
 class AddUser(forms.ModelForm):

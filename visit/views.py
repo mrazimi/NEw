@@ -11,6 +11,7 @@ from visit.forms import *
 
 time_now = datetime.date(datetime.now())
 patient = Patient.objects.all()
+visit = Visit.objects.all()
 
 
 # Create your views here.
@@ -32,6 +33,7 @@ def main_page(request):
 
     context = {
         'count': patient_list.__len__(),
+        'count_visit': visit.__len__(),
         'date': time_now,
         'role': request.user.profile.role
     }
@@ -51,10 +53,12 @@ def show_patient(request):
     if search_form.is_valid():
         patient_name = search_form.cleaned_data['patient_name']
         doctor_name = search_form.cleaned_data['doctor_name']
+        national_id = search_form.cleaned_data['national_id']
         # begin_date = search_form.cleaned_data['begin_date']
         # end_date = search_form.cleaned_data['end_date']
         patient_list = patient_list.filter(fullname__contains=patient_name)
         patient_list = patient_list.filter(doctor__fullname__contains=doctor_name)
+        patient_list = patient_list.filter(file_number__contains=national_id)
     else:
         patient_list = Patient.objects.all()
 
@@ -65,6 +69,29 @@ def show_patient(request):
         'search_form': search_form
     }
     return render(request, 'visit/show_patient.html', context)
+
+
+@login_required
+def show_files(request):
+    search_form = SearchPatient(request.GET)
+    if search_form.is_valid():
+        patient_name = search_form.cleaned_data['patient_name']
+        doctor_name = search_form.cleaned_data['doctor_name']
+        national_id = search_form.cleaned_data['national_id']
+        # begin_date = search_form.cleaned_data['begin_date']
+        # end_date = search_form.cleaned_data['end_date']
+        visit_list = Visit.objects.filter(patient__file_number__contains=patient_name)
+        visit_list = visit_list.filter(doctor__fullname__contains=doctor_name)
+        visit_list = visit_list.filter(patient__file_number__contains=national_id)
+    else:
+        visit_list = Visit.objects.all()
+    context = {
+        'visit_list': visit_list,
+        'count': visit_list.__len__(),
+        'date': time_now,
+        'search_form': search_form
+    }
+    return render(request, 'visit/show_files.html', context)
 
 
 @login_required
